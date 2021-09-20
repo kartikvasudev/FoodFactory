@@ -1,0 +1,65 @@
+<!-- component -->
+<div class="headings py-5">
+    <h1 class="text-xl text-white font-extrabold"> Your Orders </h1>
+    <img src="/img/divider.png"  width= "100px"alt="">
+</div>
+
+<% if (orders.length)  { %>
+<div class="flex flex-col items-center h-screen">
+    <div class="flex-grow overflow-auto w-3/4 ">
+        <% if(messages.success)  { %>
+        <div id="success-alert" class="flex item-center bg-green-500 text-white text-sm font-bold px-4 py-3" role="alert"> <h2> <i class="fa fa-exclamation" aria-hidden="true"></i>  <%=messages.success %></h2></div>
+    <%  } %>
+        <table class="relative w-full border">
+
+        <thead>
+          <tr>
+            <th class="sticky top-0 text-left px-4 py-2 text-green-900 bg-green-300  border-r-2">Orders</th>
+            <th class="sticky top-0 text-left px-4 py-2 text-green-900 bg-green-300 border-r-2">Payment Type</th>
+            <th class="sticky top-0 text-left px-4 py-2 text-green-900 bg-green-300 border-r-2">Status</th>
+            
+            <th class="sticky top-0 text-left px-4 py-2 text-green-900 bg-green-300 border-r-2">Address</th>
+            <th class="sticky top-0 text-left px-4 py-2 text-green-900 bg-green-300 border-r-2">Phone Number</th>
+
+            
+            <th class="sticky top-0 text-left px-4 py-2 text-green-900 bg-green-300">Time</th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y bg-green-100">
+        <% orders.forEach( function(order) {   %>
+          <tr>
+            <td id="order-number" class="px-4 py-2 font-bold text-left border-r-2  text-black text-sm"> <a href="/customer/orders/<%= order._id %>"><%= order._id %></a> </td>
+            <td class="px-4 py-2 text-left border-r-2  text-black text-sm"> <a href="/customer/orders/<%= order._id %>"><%= order.paymentType %></a> </td>
+            <td class="px-4 py-2 text-left border-r-2  text-black text-sm"> <a href="/customer/orders/<%= order._id %>"><%= order.status %></a> </td> 
+            <td class="px-4 py-2 text-left border-r-2  text-black text-sm"> <a href="/customer/orders/<%= order._id %>"><%= order.address %></a> </td>
+            <td class="px-4 py-2 text-left border-r-2  text-black text-sm"> <a href="/customer/orders/<%= order._id %>"><%= order.phone %></a> </td>
+            <td class="px-4 py-2 text-left   text-black text-sm"> <a href="/customer/orders/<%= order._id %>"><%= moment(order.createdAt).format('hh:mm A  | LL') %></a> </td>
+          </tr>
+        <% }) %>
+        </tbody>
+
+      </table>
+
+    </div>
+  </div>
+
+  <% }else { %>
+    <!-- <th> -->
+        <!-- <td id="empty-order-table" class=" w-full flex flex-col items-center px-4 py-2 font-bold text-left border-r-2  text-black text-sm"> You haven't placed any orders yet! <br> <a href="/#menu"> See Menu </a> </td> -->
+        <!-- <h6>You haven't placed any orders yet! <br> <a href="/#menu"> See Menu </a></h6>
+    </th> -->
+    <div class=" flex flex-col items-center w-full">
+        <img id="order-not-found" src="/img/Cat.png" alt="">
+        <h1 class="text-xl font-bold">No Orders Placed Yet.</h1> <br>
+        <form action="/#menu" method="GET">
+            <button  class=" btn-primary px-6 py-2 rounded-full text-red-600  font-bold mt-4">
+                Order Now <i class="fa fa-arrow-right pl-3" aria-hidden="true"></i>
+            </button>
+        </form>
+
+    </div>
+
+
+
+<% } %>

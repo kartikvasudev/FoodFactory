@@ -1,0 +1,554 @@
+//we will import all the colors and variables from variables.scss
+
+@import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
+
+body
+{
+    background-image: url('/img/bg.jpg');
+    height: 100vh;
+    background-size:cover;
+
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing : antialised;
+    color: $secondary;
+    overflow-x: hidden;
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+nav
+{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+nav li a
+{
+    position: relative;
+}
+
+nav li:last-child a {
+    color: $pure;
+
+    font-size: 25px;
+    border-radius: 50%;
+
+}
+
+nav li:last-child a
+{
+    &:hover
+    {
+        transform: scale(1.1);
+        transition: 0.3s ease-in-out;
+        content: "";
+    }
+}
+
+nav li a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #FFF;
+    visibility: hidden;
+    transform: scaleX(0) ;
+    transition: $smooth;
+
+  }
+
+  nav li:not(:last-child) a:hover:before  {
+    visibility: visible;
+    transform: scaleX(1) translateY(12px);
+  }
+
+  .badge {
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+  }
+  
+  .label-warning[href],
+  .badge-warning[href] {
+    background-color: #c67605;
+  }
+  #cartCounter {
+      font-size: 12px;
+      background: black;
+      color: #fff;
+      padding: 0 5px;
+      vertical-align: top;
+      margin-left: -10px; 
+  }
+
+  
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .overlay:target {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+  }
+  .popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .popup .close:hover {
+    color: #06D85F;
+  }
+  .popup .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+  
+  @media screen and (max-width: 700px){
+    .box{
+      width: 70%;
+    }
+    .popup{
+      width: 70%;
+    }
+  }
+
+  .food-hero
+  {
+    -webkit-box-shadow: 0px 24px 220px -112px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 24px 220px -112px rgba(0,0,0,1);
+    box-shadow: 0px 24px 220px -112px rgba(0,0,0,1);
+      border-radius: 50%;
+  }
+
+  .title-heading
+  {
+      padding-top: 0px;
+      font-size: 6rem;
+      line-height: 100px;
+  }
+
+
+  .btn-primary
+  {
+      background-color: none;
+      border: 2px solid white;
+      color: white;
+      &:hover
+      {
+          background-color: $secondary;
+          transition: $smooth;
+          color: $primary;
+      }
+  }
+
+
+  section.menu
+  {
+      background: #1c1c1c;
+  }
+
+  .menu-section
+  {
+      background: #1c1c1c;
+  }
+.headings{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headings > h1{
+    font-size: 2rem;
+    padding-bottom: 10px;
+}
+
+.formBox
+{
+  &:focus
+  {
+      outline:none;
+  }
+}
+
+button
+{
+  &:focus
+  {
+      outline:none;
+  }
+}
+.order-now
+{
+    &:focus
+    {
+        outline:none;
+    }
+}
+
+
+.size-of-product
+{
+    background: $primary;
+
+}
+
+.add-to-cart
+{
+    border:2px solid $primary;
+    color: white;
+    &:hover
+    {
+        background: $primary;
+        border-color: black;
+        color: white;
+        transition: $smooth;
+    }
+
+    &:focus
+    {
+        outline:none;
+    }
+}
+
+.food-image-container
+{
+    border-radius: 100%;
+    z-index: 999;
+}
+
+.product-image
+{
+    border-radius: 30px;
+}
+
+.food-card
+{
+    padding: 20px;
+border-radius: 36px;
+background: linear-gradient(145deg, #191919, #1e1e1e);
+box-shadow:  9px 9px 18px #111111, 
+             -9px -9px 18px #272727;
+}
+
+section.cart
+{
+    background: black;
+    .amount
+    {
+        color: $primary;
+    }
+}
+
+.wave
+{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: -999;
+}
+
+.noty_theme__mint{
+    border-radius : 50px !important;
+    padding-left: 8px !important;
+}
+
+#order-number
+{
+    color: blue;
+}
+
+#order-not-found
+{
+    height: 300px;
+    width: 300px;
+}
+section.status {
+    color:$pure;
+    background: $dark;
+    min-height: calc(100vh - 86px);
+}
+.status-box {
+    padding: 60px 0 0;
+}
+.status-box ul {
+    margin-left: 84px;
+}
+.status-box ul li span {
+    position: relative;
+    padding-left: 20px;
+}
+// Dots
+.status-box ul li span:after {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top:50%;
+    background: $gray;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow:0 0 1px 10px $dark;
+}
+
+// Icons
+.status-box ul li span:before{
+    font-family: "Line Awesome Free";
+    font-size: 46px;
+    font-weight: 600;
+    position: absolute;
+    left: -90px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: inherit !important;
+}
+.status-box ul li:nth-child(1) span:before {
+    content: '\f46c';
+}
+
+.status-box ul li:nth-child(2) span:before {
+    content: '\f560';
+}
+
+.status-box ul li:nth-child(3) span:before {
+    content: '\f818';
+}
+
+.status-box ul li:nth-child(4) span:before {
+    content: '\f0d1';
+}
+
+.status-box ul li:nth-child(5) span:before {
+    content: '\f582';
+}
+.status-box ul li {
+    position: relative;
+}
+// Line
+.status-box ul li:before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: -6px;
+   width: 2px;
+   height: 100%;
+   background: $gray;
+   margin-top: 10px;
+}
+// Last dot
+// .status-box ul li:nth-child(5) span:after {
+//     box-shadow:0 20px 1px 20px $secondary2;
+// }
+
+// line
+.status-box ul li.step-completed:before {
+    background: $gray2 !important;
+}
+
+// dots
+.status-box ul li.step-completed span:after {
+    background: $gray2 !important;
+}
+
+// text
+.status-box ul li.step-completed span {
+    color: $gray2 !important;
+}
+
+// Current status
+.status-box ul li.current span {
+    color: $primary2 !important;
+}
+
+.status-box ul li.current span:after {
+    background: $primary2 !important;
+}
+
+.status-box ul li small {
+    color: white;
+    float: right;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+@media(max-width:1060px) {
+    .container {
+        max-width: 90%;
+    }
+    table {
+       display: block;
+       overflow-x: auto;
+       white-space: nowrap;
+    }
+}
+
+@media(max-width: 768px) {
+    .status-box ul li span:before {
+        font-size: 34px;
+    }
+}
+
+//footer content
+
+footer
+{
+    position: absolute;
+    bottom: 0;
+}
+
+//error page
+
+.fundo{
+    animation: scales 3s alternate  infinite;
+    transform-origin: center;
+  }
+  .pao-baixo{
+     animation: rotatepao 14s cubic-bezier(.1,.49,.41,.97)  infinite;
+    transform-origin: center;
+  }
+  .pao-cima{
+     animation: rotatepao 7s 1s cubic-bezier(.1,.49,.41,.97)  infinite;
+    transform-origin: center;
+  }
+  .olhos{animation: olhos   2s  alternate  infinite;
+     transform-origin: center;
+  }
+  
+  .left-sparks{animation: left-sparks   4s  alternate  infinite;
+        transform-origin: 150px 156px;
+  }
+  
+  .right-sparks{animation: left-sparks   4s  alternate  infinite;
+        transform-origin: 310px 150px;
+  }
+  
+  .olhos{animation: olhos   2s  alternate  infinite;
+     transform-origin: center;
+  }
+  @keyframes scales{
+    from { transform: scale(0.98)}
+    to{ transform: scale(1)}
+  }
+  
+  @keyframes rotatepao{
+    0% { transform:  rotate(0deg)}
+    50% , 60%{ transform:  rotate(-20deg)}
+    100%{  transform:  rotate(0deg) }
+   
+  }
+  
+  @keyframes olhos{
+    0%{
+      transform: rotateX(0deg);
+    }
+     100%{
+      transform: rotateX(30deg);
+    }
+  }
+  
+  @keyframes left-sparks{
+    0%{
+      opacity: 0; 
+    }
+    
+  }
+  
+  
+  .main{
+    
+    min-height: 600px;
+    margin: 0px auto;
+    width: auto;
+    max-width: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .path {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: dash 4s   alternate infinite;
+  }
+  
+  @keyframes dash{
+     0%, 30%{
+       fill: 4B4B62;
+      stroke-dashoffset:   0;
+    }
+     80%,100%{
+       fill: transparent;
+      stroke-dashoffset:  -200;
+    }
+     
+    
+  }
+
+  //Card style 
+  /**
+ * The CSS shown here will not be introduced in the Quickstart guide, but shows
+ * how you can use CSS to style your Element's container.
+ */
+.StripeElement {
+  box-sizing: border-box;
+  width: 50%;
+  height: 40px;
+  margin-top: 20px;
+  padding: 10px 12px;
+
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: white;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;}

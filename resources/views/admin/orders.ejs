@@ -1,0 +1,24 @@
+<section class="orders light-section">
+    <div class="container mx-auto pt-12">
+        <div class="headings py-5">
+            <h1 class="text-xl text-white font-extrabold"> Active Orders </h1>
+            <img src="/img/divider.png"  width= "100px"alt="">
+        </div>
+        <table class="w-full table-auto bg-green-200">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left text-green-900 border-r-2 .border-teal-700">Orders</th>
+                    <th class="px-4 py-2 text-left text-green-900">Customer</th>
+                    <th class="px-4 py-2 text-left text-green-900">Address</th>
+                    <th class="px-4 py-2 text-left text-green-900">Status</th>
+                    <th class="px-4 py-2 text-left text-green-900">Placed at</th>
+                    <th class="px-4 py-2 text-left text-green-900">Payment Status</th>
+                
+                </tr>
+            </thead>
+            <tbody id="orderTableBody">
+                <!-- we update it using the app.js file , we make ajax call to adminOrderController -->
+            </tbody>
+        </table>
+    </div>
+</section>

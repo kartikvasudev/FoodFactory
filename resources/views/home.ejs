@@ -1,0 +1,55 @@
+
+    <section class="hero py-10">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="w-1/2">
+                <h6 class="text-sm md:text-lg">Hungry ? 🍟<br> <span class="text-sm md:text-2xl">Get Delivery at your Doorstep.</span>  </h6>
+                <h1 class=" font-bold text-3xl md:text-6xl"> Don't wait!  </h1>
+                <form method="get" action="#menu">
+                <button class=" order-now btn-primary px-6 py-2 rounded-full text-red-600  font-bold mt-4">
+                    Order Now <i class="fa fa-arrow-right pl-3" aria-hidden="true"></i>
+                </button>
+                </form>
+            </div>
+            <div class="w-1/2">
+                <img class="food-hero" width="600px" src="/img/food.gif" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- menu section -->
+
+    <section id="menu" class="w-full menu-section">
+        <section class="menu container mx-auto py-8">
+            <div class="headings py-5">
+                <h1 class="text-xl text-red-600"> Our Menu </h1>
+                <img src="/img/divider.png"  width= "100px"alt="">
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16" >
+                <% items.forEach(function(item){ %>
+
+                    <div class="w-full md:w-64  food-card" >
+                        <img class="product-image h-40 mb-4 mx-auto" src="/img/food-items/<%=item.image%>" alt="">
+                    <div class="text-center" >
+                        <h2 class="mb-4 text-lg "> <%=item.name %> </h2>
+                        <span class="py-1 px-4 rounded-full uppercase text-xs size-of-product"> <%=item.size%> </span>
+                        <div class="flex items-center justify-around mt-6">
+                            <span class="font-bold text-lg">₹<%= item.price%></span>
+                            <button data-item="<%= JSON.stringify(item) %>"  class="add-to-cart py-1 px-4 rounded-full flex items-center font-bold">
+                                <span>+</span>
+                                <span class="ml-2" >Add</span>
+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <% })%>
+
+
+
+
+            </div>
+            
+        </section>
+    </section>
